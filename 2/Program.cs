@@ -1,31 +1,28 @@
-﻿Console.Write("Введите число от 10 до 1000: ");
-int n = Convert.ToInt32(Console.ReadLine());
-
-if(n > 9 && n < 100)
+﻿void Function(int n)
+{
+    if(n > 9 && n < 100)
 {
     int a = n / 10;
     int b = n % 10;
-
-    if(n % a == 0 && n % b == 0)
+    int[] array = new int[2] {a, b};
+    int lenght = array.Length;
+    int per = 0;
+    for(int i = 0; i < lenght; i++)
     {
-        int sum = a + b;
-        Console.Write($"{n} --> {sum}");
-    }
+        try
+        {
+            if(n % array[i] == 0)
+            {
+                per = per + array[i];
+            }
+        }
 
-    else if(n % a == 0 && n / b != 0)
-    {
-        Console.Write($"{n} --> {a}");
-    }
+        catch (DivideByZeroException)
+        {
 
-    else if(n % b == 0 && n / a != 0)
-    {
-        Console.Write($"{n} --> {b}");
+        }
     }
-
-    else if(n / b != 0 && n / a != 0)
-    {
-        Console.Write($"{n} Ошибка");
-    }
+    Console.Write($"{n} --> {per}");
 }
 
 else if(n > 99 && n < 1000)
@@ -33,53 +30,58 @@ else if(n > 99 && n < 1000)
     int a = n / 100;
     int b = (n / 10) % 10;
     int c = n % 10;
-
-    if(n % a == 0 && n % b == 0 && n % c == 0)
+    int[] array = new int[3] {a, b, c};
+    int lenght = array.Length;
+    int per = 0;
+    for(int i = 0; i < lenght; i++)
     {
-        int sum = a + b + c;
-        Console.Write($"{n} --> {sum}");
-    }
+        try
+        {
+            if(n % array[i] == 0)
+            {
+                per = per + array[i];
+            }
+        }
+        catch (DivideByZeroException)
+        {
 
-    else if(n % a == 0 && n % b == 0 && n / c != 0)
-    {
-        int sum = a + b;
-        Console.Write($"{n} --> {sum}");
+        }
     }
+    Console.Write($"{n} --> {per}");
+}
 
-    else if(n % a == 0 && n / b != 0 && n % c == 0)
+else if(n > 999 && n < 10000)
+{
+    int a = n / 1000;
+    int b = (n / 100) % 10;
+    int c = (n / 10) % 10;
+    int d = n % 10;
+    int[] array = new int[4] {a, b, c, d};
+    int lenght = array.Length;
+    int per = 0;
+    for(int i = 0; i < lenght; i++)
     {
-        int sum = a + c;
-        Console.Write($"{n} --> {sum}");
-    }
+        try
+        {
+            if(n % array[i] == 0)
+            {
+                per = per + array[i];
+            }
+        }
+        catch (DivideByZeroException)
+        {
 
-    else if(n / a != 0 && n % b == 0 && n % c == 0)
-    {
-        int sum = b + c;
-        Console.Write($"{n} --> {sum}");
+        }
     }
-
-    else if(n % a == 0 && n / b != 0 && n / c != 0)
-    {
-        Console.Write($"{n} --> {a}");
-    }
-
-    else if(n / a != 0 && n % b == 0 && n / c != 0)
-    {
-        Console.Write($"{n} --> {b}");
-    }
-
-    else if(n / a != 0 && n / b != 0 && n % c == 0)
-    {
-        Console.Write($"{n} --> {c}");
-    }
-
-    else if(n / a != 0 && n / b != 0 && n / c != 0)
-    {
-        Console.Write($"{n} Ошибка");
-    }
+    Console.Write($"{n} --> {per}");
 }
 
 else
 {
-    Console.Write("Введенно неверное число");
+    Console.Write($"{n} --> Ошибка");
 }
+}
+
+Console.Write("Введите число от 10 до 10000: ");
+int number = Convert.ToInt32(Console.ReadLine());
+Function(number);
